@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fed6e3 0%, #a8c1ef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Kartu Ucapan */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            z-index: 10;
+            animation: popIn 1s ease-out forwards;
+            transform: scale(0);
+        }
+
+        h1 {
+            color: #ff477e;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        p {
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #ff7096;
+        }
+
+        /* Tombol Kejutan */
+        .btn {
+            background: linear-gradient(45deg, #ff477e, #ff7096);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 71, 126, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Animasi Balon Latar Belakang */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 65px;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            bottom: -100px;
+            opacity: 0.7;
+            animation: floatUp 8s linear infinite;
+        }
+
+        .balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 22px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 8px solid inherit;
+        }
+
+        /* Variasi Balon */
+        .b1 { left: 10%; background: #ff477e; animation-duration: 7s; }
+        .b1::after { border-bottom-color: #ff477e; }
+        
+        .b2 { left: 30%; background: #ff7096; animation-duration: 9s; animation-delay: 2s; }
+        .b2::after { border-bottom-color: #ff7096; }
+
+        .b3 { left: 70%; background: #4ea8de; animation-duration: 8s; animation-delay: 1s; }
+        .b3::after { border-bottom-color: #4ea8de; }
+
+        .b4 { left: 85%; background: #70e000; animation-duration: 10s; animation-delay: 3s; }
+        .b4::after { border-bottom-color: #70e000; }
+
+        /* Keyframes Animasi */
+        @keyframes popIn {
+            to { transform: scale(1); }
+        }
+
+        @keyframes floatUp {
+            0% {
+                bottom: -100px;
+                transform: translateX(0) rotate(0deg);
+            }
+            50% {
+                transform: translateX(50px) rotate(10deg);
+            }
+            100% {
+                bottom: 110vh;
+                transform: translateX(-20px) rotate(-10deg);
+            }
+        }
+
+        /* Pesan Rahasia */
+        #secret-message {
+            display: none;
+            margin-top: 20px;
+            font-style: italic;
+            color: #6c757d;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Balon Animasi di Latar Belakang -->
+    <div class="balloon b1"></div>
+    <div class="balloon b2"></div>
+    <div class="balloon b3"></div>
+    <div class="balloon b4"></div>
+
+    <!-- Kartu Utama -->
+    <div class="card">
+        <h1>Selamat Ulang Tahun! 🎉</h1>
+        <p>Hari ini adalah hari yang spesial untukmu. Semoga di usia yang baru ini, kamu selalu diberikan <span class="highlight">kesehatan, kebahagiaan, dan kesuksesan</span> yang berlimpah.</p>
+        <p>Terima kasih telah menjadi orang yang luar biasa. Teruslah bersinar! ✨</p>
+        
+        <button class="btn" onclick="showSurprise()">Klik Kejutan! 🎁</button>
+        
+        <div id="secret-message">
+            <p>"Semoga semua impian dan cita-citamu bisa terwujud di tahun ini. Have a blast day! 🎂🥳"</p>
+        </div>
+    </div>
+
+    <script>
+        function showSurprise() {
+            // Menampilkan pesan tambahan
+            const message = document.getElementById('secret-message');
+            message.style.display = 'block';
+            
+            // Efek alert sederhana sebagai pelengkap ucapan
+            alert('Selamat Ulang Tahun! Semoga harimu menyenangkan! ❤️✨');
+        }
+    </script>
+</body>
+</html>
